@@ -210,6 +210,7 @@ a, .btn {
     justify-content: center;
     gap: 1rem;
     /*background-color: transparent; */
+    
 }
 
 .btn {
@@ -219,11 +220,11 @@ a, .btn {
     width: 8rem;
     border-radius: 2rem;
     
+    
 }
 
 .btn-color-1, .btn-color-2 {
-    border: whitesmoke 0.1rem solid;
-    color: black;
+    border: #404E4D 0.1rem solid;
 }
 
 .btn-color-1:hover, .btn-color-2:hover {
@@ -231,14 +232,17 @@ a, .btn {
 }
 
 .btn-color-2 {
-    background: #404E4D;
+    background: whitesmoke;
+    
 }
 
 .btn-container {
     gap: 2rem;
     background-color: transparent;
-    
+}
 
+.button-text {
+    color: #404E4D;
 }
 
 
