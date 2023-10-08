@@ -1,5 +1,27 @@
 export { storeResonse, getMoodsForMonth, getResponsesForDay }
 
+var prompts = [["What was the best part of your day?"],
+["Did anything surprise you today?"],
+["Did you read or listen to anything interesting today?"],
+["Did you take any photos today?"],
+["What did you do that was just for you today?"],
+["What did you do to take care of yourself today?"],
+["When did you feel appreciated today?"],
+["If you could guarantee one thing for tomorrow what would it be?"],
+["What was the most interesting thing you did today?  "],
+["Tell me three good things about today."],
+["Did you receive any good news today?  "],
+["What did you do today that you're most proud of?  "],
+["What inspired you the most today?"],
+["What is something you did today that you'd love to do every day?"],
+["What was the worst part of your day?"],
+["What do you wish you did more of today?"],
+["What do you wish you did less of today?"],
+["What are you most grateful for about your day?"],
+["Will you remember any specific part of your day a year from now? Five years? How come?"],
+["If you could do any part of today over again, what would it be and why?"],
+["Did you learn anything new today?"],
+["What did you spend most of your time doing/thinking about today?"]]
 
 /**
  * 
@@ -57,3 +79,6 @@ let getResponsesForDay = function(day, month, year) {
 // (["rain", "dog died", "failed test"],["got a girlfriend", "hit a pr", "nummy daka food"])
 
 // getRandomPrompt
+let getRandomPrompt = function() {
+    fetch("../prompts.txt")
+}
