@@ -2,6 +2,8 @@
 /* Importing Font*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Poppins:wght@300;400;500;600&display=swap');
+
 html {
     scroll-behavior: smooth;
 }
@@ -118,7 +120,6 @@ nav {
     list-style: none;
     font-size: 1.5rem;
     background-color: transparent;
-    
 }
 
 a {
@@ -129,12 +130,12 @@ a {
     
 }
 
-a:hover {
+.links:hover {
     color: white;
     text-decoration: underline;
     text-underline-offset: 1rem;
     text-decoration-color: white;
-    transition: all 900ms ease;
+    transition: all 3 ease;
 }
 
 @keyframes anim-lineUp {
@@ -188,6 +189,7 @@ a, .btn {
     font-size: 6rem;
     background-color: transparent;
     text-shadow: 1px 5px 10px #404E4D;
+    font-family: 'Jost', sans-serif;
 }
 
 
