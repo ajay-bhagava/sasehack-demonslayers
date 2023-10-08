@@ -1,6 +1,6 @@
-export { storeResonse, getMoodsForMonth, getResponsesForDay }
+export { storeResonse, getMoodsForMonth, getResponseForDay, getRandomPrompt }
 
-var prompts = [["What was the best part of your day?"],
+const prompts = [["What was the best part of your day?"],
 ["Did anything surprise you today?"],
 ["Did you read or listen to anything interesting today?"],
 ["Did you take any photos today?"],
@@ -48,7 +48,6 @@ let getMoodsForMonth = function(year, month) {
 
     for (const key in allKeys) {
         let dateKey = new Date(key);
-        let keyMonth = dateKey.getMonth();
         if(dateKey.getMonth() + 1 == month && dateKey.getFullYear() == year) {
             let response = JSON.parse(localStorage.getItem(key))
             moods.push([response.firstMood, response.endMood]);
@@ -58,13 +57,14 @@ let getMoodsForMonth = function(year, month) {
 }
 
 
-// getResponsesForDay(day, month, year) -> tuple
-let getResponsesForDay = function(day, month, year) {
+// getResponseForDay(day, month, year) -> tuple
+let getResponseForDay = function(day, month, year) {
     allKeys = Object.keys(localStorage)
     let response =  {};
+    let date = new Date(null);
     
     for (const key in object) {
-        let date = new Date(key);
+        date.setDate(key)
         if(date.getDate() == day && date.getMonth() == month - 1 && date.getFullYear() == year) {
             response = JSON.parse(localStorage.getItem(key));
             break;
@@ -77,8 +77,31 @@ let getResponsesForDay = function(day, month, year) {
 
 // getTrendForWeek() -> Tuple of Lists of string
 // (["rain", "dog died", "failed test"],["got a girlfriend", "hit a pr", "nummy daka food"])
+let getTrendForWeek = function(startDate) {
+    // Group the week's responses into positive and negative
+    let currDate = new Date(startDate)
+    let positive = []
+    let negative = []
+    for(let i = 0; i < 7; i++) {
+        let currResponse = getResponseForDay(currDate.getDate(), currDate.getMonth(), currDate.getFullYear());
+        if (currResponse.endMood > 5) {
+            positive.push(currResponse.response);
+        } else {
+            negative.push(currResponse.response);
+        }
+        currDate.setDate(currDate.getDate() + 1)
+    }
+
+    // Call the Google cloud NLP API to categorize responses
+    
+}
 
 // getRandomPrompt
 let getRandomPrompt = function() {
-    fetch("../prompts.txt")
+    let prompt = getRandomInt(prompts.length);
+    return prompts[prompt][0]
+}
+
+let getRandomInt = function(max) {
+    return Math.floor(Math.random() * max)
 }

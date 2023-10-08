@@ -6,6 +6,7 @@
     background-color: #2F2D2E;
     margin: 0;
     padding: 0;
+    color: #fff;
 }
 
 html {
@@ -84,18 +85,18 @@ a, .btn {
     font-weight: 600;
     margin-bottom: 10px;
 }
-.text h5{
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
 .text p{
     font-size: 18px;
     line-height: 25px;
     letter-spacing: 1px;
 }
-.link{
+.text h3{
+    font-size: 40px;
+    font-weight: 600;
     margin-top: 30px;
+}
+.link{
+    margin-top: 15px;
 }
 .hire{
     text-decoration: none;
@@ -106,8 +107,13 @@ a, .btn {
     border-radius: 6px;
     border: none;
     transition: 0.05s;
-
+    display: flex;
 }
 .hire:hover{
     background: #000;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
