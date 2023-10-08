@@ -1,4 +1,4 @@
-export { storeResonse, getMoodsForMonth, getResponseForDay, getRandomPrompt }
+export { storeResonse, getMoodsForMonth, getResponseForDay, getRandomPrompt, getTrendForWeek }
 
 const prompts = [["What was the best part of your day?"],
 ["Did anything surprise you today?"],
@@ -32,10 +32,10 @@ const prompts = [["What was the best part of your day?"],
  */
 let storeResonse = function(firstMood, prompt, promptAnswer, endMood) {
     let toPut = {
-        "firstMood" : firstMood,
-        "prompt" : prompt,
-        "promptAnswer" : promptAnswer,
-        "endMood" : endMood
+        firstMood : firstMood,
+        prompt : prompt,
+        promptAnswer : promptAnswer,
+        endMood : endMood
     }
     localStorage.setItem(Date(), JSON.stringify(toPut))
 }
@@ -46,7 +46,7 @@ let getMoodsForMonth = function(year, month) {
     allKeys = Object.keys(localStorage)
     let moods = [];
 
-    for (const key in allKeys) {
+    for (const key of allKeys) {
         let dateKey = new Date(key);
         if(dateKey.getMonth() + 1 == month && dateKey.getFullYear() == year) {
             let response = JSON.parse(localStorage.getItem(key))
@@ -63,7 +63,7 @@ let getResponseForDay = function(day, month, year) {
     let response =  {};
     let date = new Date(null);
     
-    for (const key in object) {
+    for (const key of object) {
         date.setDate(key)
         if(date.getDate() == day && date.getMonth() == month - 1 && date.getFullYear() == year) {
             response = JSON.parse(localStorage.getItem(key));
@@ -84,7 +84,7 @@ let getTrendForWeek = function(startDate) {
     let negative = []
     for(let i = 0; i < 7; i++) {
         let currResponse = getResponseForDay(currDate.getDate(), currDate.getMonth(), currDate.getFullYear());
-        if (currResponse.endMood > 5) {
+        if (currResponse.endMood > 2) {
             positive.push(currResponse.response);
         } else {
             negative.push(currResponse.response);
@@ -92,8 +92,34 @@ let getTrendForWeek = function(startDate) {
         currDate.setDate(currDate.getDate() + 1)
     }
 
-    // Call the Google cloud NLP API to categorize responses
-    
+    let positiveTopics;
+    let negativeTopics;
+    // Call the NLP API to categorize responses
+    let formdata = new FormData();
+    formdata.append("api_token", "fcA76GoUHh9iQxLJMAEfPtZGvLTcKbOy5zCRaEiw");
+    formdata.append("text", positive.join(" "));
+
+    var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch("https://api.nlp-api.com/v1/topics", requestOptions)
+    .then(response => response.text())
+    .then(result => positiveTopics = result)
+    .catch(error => console.log('error', error));
+
+    formdata.set("text", negative.join(" "));
+    requestOptions.body = formdata;
+
+
+    fetch("https://api.nlp-api.com/v1/topics", requestOptions)
+    .then(response => response.text())
+    .then(result => negativeTopics = result)
+    .catch(error => console.log('error', error));
+
+    return [negativeTopics, positiveTopics]
 }
 
 // getRandomPrompt
