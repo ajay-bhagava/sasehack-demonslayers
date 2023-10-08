@@ -125,7 +125,7 @@ let getTrendForWeek = function(startDate) {
 // getRandomPrompt
 let getRandomPrompt = function() {
     let prompt = getRandomInt(prompts.length);
-    return prompts[prompt][0]
+    return prompts[prompt].join("");
 }
 
 let getRandomInt = function(max) {
