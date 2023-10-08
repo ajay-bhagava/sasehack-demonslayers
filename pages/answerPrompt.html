@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/moodcheck.css">
+    <script type="module" src="../scripts/ghettoapi.js"></script>
+    <script type="module" src="../scripts/mood.js"></script>
+    <style>
+        .promptBox {
+            border-radius: 6px;
+            border-width: 3px;
+            width: 100%;
+            min-height: 100px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="wrapper">
+        <h1 id="prompt">How was your day today?</h1>
+        <textarea class="promptBox" type="text" placeholder="Enter Your Thoughts" id="response"></textarea>
+        <button class="submit" id="regeneratePrompt" onclick="">Regenerate Prompt</button>
+        <button class="submit" id="submitPrompt" onclick="">Submit</button>
+    </div>
+
+    <script>
+        const body = document.querySelector("body");
+        const emoji = document.querySelector(".slide-emoji");
+        const input = document.querySelector("input");
+        const bar = document.querySelector(".progress-bar");
+        const thumb = document.querySelector(".thumb");
+        input.oninput = ()=>{
+          let sliderValue = input.value;
+          thumb.style.left = sliderValue + '%';
+          bar.style.width = sliderValue + '%';
+          if(sliderValue < 20){
+            emoji.style.marginTop = "0px";
+            body.classList.add("angry");
+            body.classList.remove("confuse");
+            body.classList.remove("like");
+          }
+          if(sliderValue >= 20){
+            emoji.style.marginTop = "-140px";
+            body.classList.add("confuse");
+            body.classList.remove("angry");
+            body.classList.remove("like");
+          }
+          if(sliderValue >= 40){
+            emoji.style.marginTop = "-280px";
+          }
+          if(sliderValue >= 60){
+            emoji.style.marginTop = "-420px";
+            body.classList.add("like");
+            body.classList.remove("confuse");
+            body.classList.remove("angry");
+          }
+          if(sliderValue >= 80){
+            emoji.style.marginTop = "-560px";
+          }
+        }
+      </script>
+
+</body>
+
+</html>

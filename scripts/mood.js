@@ -20,3 +20,10 @@ let getMood = function(moodInput) {
     return moodInput.value / 20 >> 0
 }
 
+let getPromptResponse = function() {
+    let prompt = document.getElementById("prompt").innerText
+    let response = document.getElementById("response").value
+    localStorage.setItem("prompt", prompt);
+    localStorage.setItem("response", response);
+}
+
