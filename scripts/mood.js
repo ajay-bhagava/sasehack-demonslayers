@@ -20,9 +20,12 @@ firstMoodButton.addEventListener("click", async (e) => {
     });
 
     wrapperElement.innerHTML = newInnerText;
-    document.getElementById("prompt").innerText = getRandomPrompt();
-
-    
+    let promptHeader = document.getElementById("prompt")
+    promptHeader.innerText = getRandomPrompt();
+    document.getElementById("submitPrompt").addEventListener("click", submitPrompt)
+    let responsebutton = document.getElementById("regeneratePrompt")
+    responsebutton.addEventListener("click", regeneratePrompt)
+    console.log("bruh")
 });
 
 let getMood = function(moodInput) {
@@ -34,5 +37,10 @@ let getPromptResponse = function() {
     let response = document.getElementById("response").value
     localStorage.setItem("prompt", prompt);
     localStorage.setItem("response", response);
+}
+
+let regeneratePrompt = function(e) {
+    let promptHeader = document.getElementById("prompt")
+    promptHeader.innerText = getRandomPrompt();
 }
 
