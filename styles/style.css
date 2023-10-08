@@ -110,9 +110,10 @@ nav, .nav-links {
 nav {
     justify-content: space-around;
     align-items: center;
-    height: 17vh;
-    background-color: transparent;
+    height: 12vh;
+    background-color: rgb(64,78,77, 0.3);
     color: white;
+    backface-visibility: 20%;
 }
 
 .nav-links {
@@ -189,7 +190,7 @@ a, .btn {
     margin: 10px;
     font-size: 6rem;
     background-color: transparent;
-    text-shadow: 1px 5px 10px #404E4D;
+    text-shadow: 1px 2px 5px #404E4D; 
     font-family: 'Jost', sans-serif;
 }
 
