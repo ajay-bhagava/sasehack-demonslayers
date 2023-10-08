@@ -1,20 +1,18 @@
 /* Importing Font*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Poppins:wght@300;400;500;600&display=swap');
 
-* {
-
-}
 body {
     margin: 0;
-    padding: 0;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background-color: linear-gradient(-45deg, #4158D0, #e560dc, #ffb374, #ef5f5f, #d840b6);
+    background: linear-gradient(-45deg, #4158D0, #e560dc, #ffb374, #ef5f5f, #d840b6);
     background-size: 400%, 400%;
-    animation: bg 12s ease infinite;
+    animation: gradientbackground 12s ease infinite;
+    
 }
 
-@keyframes bg {
+@keyframes gradientbackground {
     0% {
         background-position: 0% 50%;
     }
@@ -26,14 +24,15 @@ body {
     }
 }
 
-/* Nav Bar */
+
 nav, .nav-links {
-    display: flex; /* puts nav bar horizontal top */
+    display: flex;
 }
 
 .logo {
     font-size: 2rem;
     font-weight: 600;
+    font-family: 'Jost', sans-serif;
 }
 
 .logo:hover {
@@ -70,6 +69,6 @@ a {
     text-underline-offset: 1rem;
     text-decoration-color: white;
     transition: all 3 ease;
-}
+} 
 
 
