@@ -1,44 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Calendar</title>
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet"
-		href=
-"https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="calendar.css">
+    <script src="calendar.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyJ</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="../styles/about.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <!-- Link to local CSS -->
 </head>
-
 <body>
-	<div class="calendar-container">
-		<header class="calendar-header">
-			<p class="calendar-current-date"></p>
-			<div class="calendar-navigation">
-				<span id="calendar-prev"
-					class="material-symbols-rounded">
-					chevron_left
-				</span>
-				<span id="calendar-next"
-					class="material-symbols-rounded">
-					chevron_right
-				</span>
-			</div>
-		</header>
+    <!-- Navigation Bar -->
+    <nav id="desktop-nav">
+        <div class="logo">
+            <a href="index.html">MyJ</a>
+        </div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="mood.html">MOOD CHECKER</a></li>
+                <li><a href="calendar.html">CALENDAR</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+            </ul>
+        </div>
+    </nav> 
 
-		<div class="calendar-body">
-			<ul class="calendar-weekdays">
-				<li>Sun</li>
-				<li>Mon</li>
-				<li>Tue</li>
-				<li>Wed</li>
-				<li>Thu</li>
-				<li>Fri</li>
-				<li>Sat</li>
-			</ul>
-			<ul class="calendar-dates"></ul>
-		</div>
-	</div>
+    <!-- About Us Page -->
+    <section class="calendar">
+        <div class="about">
+            <div class="text">
+                <h2>Calendar</h2>
+            </div>
+        </div>
+
+        <!-- Content from the first HTML snippet -->
+        <div class="wrapper">
+            <header>
+                <p class="current-date"></p>
+                <div class="icons">
+                    <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                    <span id="next" class="material-symbols-rounded">chevron_right</span>
+                </div>
+            </header>
+            <div class="calendar">
+                <ul class="weeks">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                </ul>
+                <ul class="days" id="calendar-dates"></ul>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
